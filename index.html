@@ -77,10 +77,28 @@
                         <h3>Preview</h3>
                         <iframe id="preview" class="preview" sandbox="allow-scripts allow-same-origin allow-modals allow-forms"></iframe>
                     </div>
-                    
                 </div>
             </section>
+            
+
+            <aside class="card panel stack">
+                <h2>Output</h2>
+                <div id="output" class="out" aria-live="polite"></div>
+
+                <div class="row">
+                    <button class="btn warn" id="runTests">Run Tests</button>
+                    <button class="btn secondary">Clear Log</button>
+                </div>
+
+                <h3>Notes</h3>
+                <ul class="muted">
+                    <li>Everything runs inside the browser in a sandbox.</li>
+                    <li>You can save the work as a JSON file and reload it.</li>
+                </ul>
+            </aside>
         </main>
+
+        <div class="footer">&copy; 2025 TrioCode - All rights reserved.</div>
     </body>
 
 
