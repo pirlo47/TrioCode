@@ -1,0 +1,33 @@
+/* Define our color variables */
+:root{
+    --bg: black;
+    --body-bg: black;
+    --panel: black;
+    --muted: grey;
+    --txt: white;
+    --brand: cyan;
+    --brand-2: #60a5fa;
+    --ok: #22c55e;;
+    --warn: #eab308;
+    --err: #ef4444;
+    --radius: 18px;
+    --gap: 14px; 
+}
+
+/* Reset the deafult margin, padding and box sizing */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%; 
+}
+
+body{
+    font-family: sans-serif;
+    background: linear-gradient(108deg, var(--body-bg), var(--bg) 35%);
+    color: var(--txt);
+}
