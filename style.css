@@ -31,3 +31,36 @@ body{
     background: linear-gradient(108deg, var(--body-bg), var(--bg) 35%);
     color: var(--txt);
 }
+
+header{
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(96, 165, 250, 0.15), rgba(125, 211,252, 0.1));
+    border-bottom: 10px solid rgba(255, 255, 255, 0.06);
+}
+
+.container{
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 14px;
+    justify-content: space-between;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.brand .logo{
+    inline-size: 30px;
+    block-size: 50px;
+    border-radius: 30x;
+    background: url("./_Yellow\ and\ Black\ Code\ Geek\ Computer\ Logo.png")
+    center / contain no-repeat;
+}
+
+.title{
+    font-size: clamp(18px, 2vw, 22ppx); 
+}
+
