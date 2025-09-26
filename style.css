@@ -64,3 +64,121 @@ header{
     font-size: clamp(18px, 2vw, 22ppx); 
 }
 
+main {
+    max-width: 1516px;
+    margin-inline: auto;
+    padding: 18px;
+    display: grid; /* suitable for 2-d css grid */
+    grid-template-columns: 280px 1fr 360px;
+    gap: var(--gap);
+}
+
+/* media query */
+@media (max-width: 1100px){
+    main{
+        grid-template-columns: 1fr; 
+    }
+}
+
+.card{
+    background: linear-gradient(180deg, rgba(255,255,225,0.05) 0%, rgba(255,255,255,0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 20px #fbbe28 ;
+    padding: 18px;
+}
+  
+.panel{
+    padding: 16px
+}
+
+h2, h3 {
+    margin: 0 0 12px; 
+}
+
+.muted{
+    color: var(--muted);
+}
+
+.stack{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.btn{
+    appearance: none;
+    border: none;
+    background: linear-gradient(180deg, var(--brand-2), var(--brand));
+    color: #0b111f;
+    font-weight: 700;
+    padding: 10px 14px;
+    border: 12px;
+    cursor: pointer; 
+    box-shadow: 0 10px 24px rgba(96, 165, 250, 0.35);
+}
+
+.btn.secondary{
+    background: transparent;
+    border: 1px solid rgba(2555, 255, 25, 0.15);
+    box-shadow: none;
+    color: var(--txt);
+}
+
+.btn.warn{
+    background: linear-gradient(180deg, #f59e0b, #eab308);
+}
+
+.btn.ok{
+    background: linear-gradient(180deg, #22c55e, #16a34a);
+}
+
+.btn.err{
+    background: linear-gradient(180deg, #ef4444, #d91e18);
+}
+
+.select, select, .text {
+    background-color: rgba(125, 211,252, 0.03);
+    border: 1px solid rgba(96, 165, 250, 0.12);
+    color: var(--txt);
+    padding: 10px 12px;
+    border-radius: 12px; 
+
+}
+
+textarea.text{
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+}
+
+.tabs{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tab{
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(2555, 255, 25, 0.03);
+    cursor: pointer;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.tab.active{
+    background: linear-gradient(180deg, rgba(125, 211, 252, 0.18), rgba(96, 165, 250, 0.18));
+    color: #00FF00 !important;
+}
