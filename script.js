@@ -4,7 +4,7 @@ const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const out = $("#output");
 const preview = $("#preview");
-const STORAGE_KEY = "trio_code_storage";
+const STORAGE_KEY = "trio_code_file";
 
 
 //Convert HTML to text
@@ -176,7 +176,7 @@ function runWeb(withTests=false){
     log(withTests ? "Running tests..." : "Web preview updated.");
 }
 
-$("runweb")?.addEventListener("click", () => runWeb(false));
+$("#runweb")?.addEventListener("click", () => runWeb(false));
 
 $("#runTests")?.addEventListener("click", () => runWeb(true));
 
@@ -190,4 +190,86 @@ $("#openPreview")?.addEventListener("click", () => {
     w.document.close();
 })
 
- 
+function projectJSON(){
+    return {
+        version: 1,
+        kind: 'web-only',
+        assignment: $("#assignment")?.value || "",
+        test: $("#testArea")?.value || "",
+        html: ed_html.getValue(),
+        css: ed_css.getValue(),
+        js: ed_js.getValue()
+    };
+}
+
+function loadProject(obj){
+    try{
+        if ($('#assignment')) $("#assignment").value = obj.assignment || "";
+
+        if ($('#testArea')) $("#testArea").value = obj.test || "";
+
+        ed_html.setValue(obj.html || "", -1);
+
+        ed_css.setValue(obj.css || "", -1);
+
+        ed_js.setValue(obj.js || "", -1);
+
+    } catch(e){
+        log("Unable to load project: " + e, "error"); 
+    }
+}
+
+function setDefaultContent(){
+    ed_html.setValue(`<h1>Hello World!</h1>`, -1);
+    ed_css.setValue(`body {
+    background-color: #000;
+    color: #fff;
+}`, -1);
+    ed_js.setValue(`console.log("Hello World!");`, -1);
+}
+
+function saveProject(){
+
+    try{
+        const data = JSON.stringify(projectJSON(), null, 2);
+        localStorage.setItem(STORAGE_KEY, data);
+        const blob = new Blob([data], {type: "application/json"});
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "trio-code.json";
+        a.click();
+        log("Downloaded and saved as JSON file");
+
+    }catch (e){
+        log("Unable to save: " + e, "error"); 
+    }
+}
+
+$("#saveBtn")?.addEventListener("click", saveProject);
+$("#loadBtn")?.addEventListener("click", () => $("#openFile").click());
+$("#openFile")?.addEventListener("change", async (e) => {
+    const f = e.target.files?.[0];
+    if (!f) return;
+
+    try{
+        const obj = JSON.parse(await f.text());
+        loadProject(obj);
+    } catch(err){
+        log("Invalid project file", "error");
+    }
+});
+
+try {
+    const cache = localStorage.getItem(STORAGE_KEY);
+    if (cache) {
+        loadProject(JSON.parse(cache));
+    } else {
+        setDefaultContent();
+
+    }
+} catch{
+    setDefaultContent();
+
+}
+
+log("Ready- Trio Code: Web only editor (HTML / CSS / JS)");
