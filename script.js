@@ -1,4 +1,3 @@
-const { createElement } = require("react");
 
 // ================= UTILITIES ==================
 const $ = s => document.querySelector(s);
@@ -32,6 +31,41 @@ function log(msg, type='info'){
 
 function clearOut(){
     out.innerHTML = "";
+}
+
+$("#clearOut")?.addEventListener("click", clearOut);
+
+
+function makeEditor(id, mode){
+
+    const ed = ace.edit(id,{
+        theme: "ace/theme/dracula",
+        mode,
+        tabSize: 4, 
+        useSoftTabs: true,
+        showPrintMargin: false,
+        wrap: true
+    }); 
+    
+    ed.commands.addCommand({
+        name: "run",
+        bindkey: {
+            win: 'Ctrl-Enter',
+            mac: 'Command-Enter'
+        }, 
+        exec(){runWeb(false);}
+    });
+
+    ed.commands.addCommand({
+        name: "save",
+        bindkey: {
+            win: 'Ctrl-Enter',
+            mac: 'Command-Enter'
+        },
+        exec(){saveProject();}
+    })
+     
+
 }
 
  
