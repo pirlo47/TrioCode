@@ -220,3 +220,15 @@ iframe.preview {
     text-align: center;
     padding: 12px;
 }
+
+.kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Cascadia Code", monospace;
+    background-color: #0e1324;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFF;
+}
