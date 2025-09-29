@@ -182,3 +182,41 @@ textarea.text{
     background: linear-gradient(180deg, rgba(125, 211, 252, 0.18), rgba(96, 165, 250, 0.18));
     color: #00FF00 !important;
 }
+
+.editor-wrap {
+    position: relative; 
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 280px;
+    background-color: #0b1020;
+}
+
+.editor {
+    inline-size: 100%;
+    block-size: 380px;
+} 
+
+iframe.preview {
+    inline-size: 100%;
+    block-size: 380px;
+    border: 10px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px; 
+    background-color: #FFF;
+}
+
+.out{
+    background-color: #0a0e1a;
+    border: 1px solid rgba(255. 255, 255, 0.12);
+    padding: 10px;
+    min-height: 160px; 
+    overflow: auto;
+    white-space: pre-wrap; 
+}
+
+.footer {
+    opacity: 0.9;
+    font-size: 17px;
+    text-align: center;
+    padding: 12px;
+}
