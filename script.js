@@ -19,9 +19,14 @@ const escapeHtml = s =>
 
 //log function for debugging
 function log(msg, type='info'){
-    const color = type === 'error' ? 'var(--err)' : type === "warn" ? 'var(--warn)' : "var(--brand)";
+    const color = type === 'error' ? 'var(--err)' 
+    : type === "warn" ? 'var(--warn)' 
+    : "var(--brand)";
 
-    const time = new Date().createElement("div");
+    //Create log line
+    const line = document.createElement('div');
+
+    const time = new Date().toLocaleTimeString();
 
     line.innerHTML = `<span style="color: ${color}">[${time}]</span> ${escapeHtml(msg)}`; 
     
@@ -74,7 +79,7 @@ const ed_js = makeEditor("ed_js", "ace/mode/javascript");
 
 const TAB_ORDER  = ["html", "css", "js"];
 
-const wraps = Object.fromEntries($$("#webEditors .editor-warp").map(w => [w.dataset.pane, w]));
+const wraps = Object.fromEntries($$("#webEditors .editor-wrap").map(w => [w.dataset.pane, w]));
 
 const editors = {
     html: ed_html, 
@@ -147,7 +152,7 @@ function buildwebSrcdoc(withTests=false) {
 
                 <style>
                     ${css}\n
-                <style>
+                </style>
             </head>
 
             <body>
@@ -176,7 +181,7 @@ function runWeb(withTests=false){
     log(withTests ? "Running tests..." : "Web preview updated.");
 }
 
-$("#runweb")?.addEventListener("click", () => runWeb(false));
+$("#runWeb")?.addEventListener("click", () => runWeb(false));
 
 $("#runTests")?.addEventListener("click", () => runWeb(true));
 
